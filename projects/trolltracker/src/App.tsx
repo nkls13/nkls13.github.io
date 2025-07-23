@@ -26,11 +26,16 @@ const App: React.FC = () => {
     setShowForm(false);
   };
 
-  const filteredTrolls = trolls.filter(
-    troll =>
-      troll.gamertag.toLowerCase().includes(search.toLowerCase()) ||
-      troll.info.toLowerCase().includes(search.toLowerCase())
-  );
+const searchLower = (search || "").toLowerCase();
+
+const filteredTrolls = trolls.filter(troll =>
+  typeof troll.gamertag === "string" &&
+  typeof troll.info === "string" &&
+  (
+    troll.gamertag.toLowerCase().includes(searchLower) ||
+    troll.info.toLowerCase().includes(searchLower)
+  )
+);
 
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial" }}>
