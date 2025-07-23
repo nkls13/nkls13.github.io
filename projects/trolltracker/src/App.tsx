@@ -28,7 +28,7 @@ const App: React.FC = () => {
 
   const filteredTrolls = trolls.filter(
     troll =>
-      troll.name.toLowerCase().includes(search.toLowerCase()) ||
+      troll.gamertag.toLowerCase().includes(search.toLowerCase()) ||
       troll.info.toLowerCase().includes(search.toLowerCase())
   );
 

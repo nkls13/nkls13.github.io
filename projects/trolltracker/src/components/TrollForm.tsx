@@ -7,18 +7,25 @@ interface Props {
 }
 
 const TrollForm: React.FC<Props> = ({ onSubmit, onClose }) => {
-  const [name, setName] = useState("");
+  const [gamertag, setName] = useState("");
   const [info, setInfo] = useState("");
+    const [kda, setKda] = useState("");
+    const [champ, setChamp] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newTroll: Troll = {
       id: crypto.randomUUID(),
-      name,
+      gamertag,
+      kda,
+      champ,
       info,
       created: new Date().toISOString(),
     };
+
     onSubmit(newTroll);
+    setKda("");
+    setChamp("");
     setName("");
     setInfo("");
   };
@@ -33,11 +40,28 @@ const TrollForm: React.FC<Props> = ({ onSubmit, onClose }) => {
         <input
           type="text"
           placeholder="Troll name"
-          value={name}
+          value={gamertag}
           onChange={(e) => setName(e.target.value)}
           required
           style={{ display: "block", marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
         />
+        <input
+          type="text"
+          placeholder="Champion name"
+          value={champ}
+          onChange={(e) => setChamp(e.target.value)}
+          required
+          style={{ display: "block", marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
+          />
+        <input
+          type="text"
+          placeholder="KDA (e.g., 2/1/3)"
+          value={kda}
+          onChange={(e) => setKda(e.target.value)}
+          required
+          style={{ display: "block", marginBottom: "1rem", width: "100%", padding: "0.5rem" }}
+          />
+          
         <textarea
           placeholder="Troll info"
           value={info}
