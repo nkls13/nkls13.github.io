@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 // Make sure the path is correct and the file exists
 import SearchBar from "./components/SearchBar.tsx";
+import "./components/Sidebar.css";
+import Sidebar from "./components/Sidebar.tsx";
 import TrollForm from "./components/TrollForm.tsx";
 import TrollList from "./components/TrollList.tsx";
 import type { Troll } from "./types.ts";
@@ -38,16 +40,18 @@ const filteredTrolls = trolls.filter(troll =>
 );
 
   return (
+    <>
+    <Sidebar />
     <main style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1>🧙 Troll Tracker</h1>
+      <h1>Troll Tracker</h1>
       <button onClick={() => setShowForm(true)}>➕ Add Troll</button>
-
       <SearchBar search={search} setSearch={setSearch} />
 
       <TrollList trolls={filteredTrolls} />
 
       {showForm && <TrollForm onSubmit={addTroll} onClose={() => setShowForm(false)} />}
     </main>
+    </>
   );
 };
 
