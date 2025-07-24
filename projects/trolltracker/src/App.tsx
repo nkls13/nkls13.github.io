@@ -42,6 +42,7 @@ const filteredTrolls = trolls.filter(troll =>
   return (
     <>
     <Sidebar />
+    <div className = "main-content">
     <main style={{ padding: "2rem", fontFamily: "Arial" }}>
       <h1>Troll Tracker</h1>
       <button onClick={() => setShowForm(true)}>➕ Add Troll</button>
@@ -51,6 +52,7 @@ const filteredTrolls = trolls.filter(troll =>
 
       {showForm && <TrollForm onSubmit={addTroll} onClose={() => setShowForm(false)} />}
     </main>
+    </div>
     </>
   );
 };
